@@ -22,7 +22,7 @@ public class HIH6020
 		// Read 4 bytes of data
 		// humidity msb, humidity lsb, temp msb, temp lsb
 		byte[] data = new byte[4];
-		device.read(data, 0, 4);
+		device.read(0x00, data, 0, 4);
 
 		// Convert the data to 14-bits
 		double humidity = (((data[0] & 0x3F) * 256) + (data[1] & 0xFF)) / 16382.0 * 100.0;
