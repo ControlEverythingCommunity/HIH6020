@@ -44,6 +44,6 @@ void main()
 		// Output data to screen
 		printf("Relative Humidity : %.2f RH \n", humidity);
 		printf("Temperature in Celsius : %.2f C \n", cTemp);
-		printf("Temperature in Farhenheit : %.2f F \n", fTemp);
+		printf("Temperature in Fahrenheit : %.2f F \n", fTemp);
 	}
 }
