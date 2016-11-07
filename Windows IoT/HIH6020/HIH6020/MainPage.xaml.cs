@@ -19,8 +19,8 @@ namespace HIH6020
 
 	public sealed partial class MainPage : Page
 	{
-		private const byte HUMTEMP_I2C_ADDR = 0x27;			// I2C address of the HIH6020
-		private const byte HUMTEMP_REG_CONV = 0x00;			  // Humidity and Temperature data register
+		private const byte HUMTEMP_I2C_ADDR = 0x27;		// I2C address of the HIH6020
+		private const byte HUMTEMP_REG_CONV = 0x00;		// Humidity and Temperature data register
 
 		private I2cDevice I2CHumtemp;
 		private Timer periodicTimer;
@@ -38,7 +38,7 @@ namespace HIH6020
 
 		private async void InitI2CHumtemp()
 		{
-			string aqs = I2cDevice.GetDeviceSelector();				// Get a selector string that will return all I2C controllers on the system
+			string aqs = I2cDevice.GetDeviceSelector();		// Get a selector string that will return all I2C controllers on the system
 			var dis = await DeviceInformation.FindAllAsync(aqs);	// Find the I2C bus controller device with our selector string
 			if (dis.Count == 0)
 			{
@@ -54,8 +54,8 @@ namespace HIH6020
 				Text_Status.Text = string.Format(
 					"Slave address {0} on I2C Controller {1} is currently in use by " +
 					"another application. Please ensure that no other applications are using I2C.",
-					settings.SlaveAddress,
-					dis[0].Id);
+				settings.SlaveAddress,
+				dis[0].Id);
 				return;
 			}
 
@@ -105,7 +105,7 @@ namespace HIH6020
 		private HumdTemp ReadI2CHumtemp()
 		{
 			byte[] RegAddrBuf = new byte[] { HUMTEMP_REG_CONV };	// Read data from the register address
-			byte[] ReadBuf = new byte[4];							// We read 4 bytes sequentially to get all 2 two-byte humidity and temperature registers in one read
+			byte[] ReadBuf = new byte[4];				// We read 4 bytes sequentially to get all 2 two-byte humidity and temperature registers in one read
 
 			/*
 				Read from the Humidity and Temperature Sensor 
